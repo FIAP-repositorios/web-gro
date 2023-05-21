@@ -4,23 +4,32 @@ import { Container, Title } from '../styles/home'
 import axios from 'axios'
 
 export default function Home() {
-    const [abilities, setAbilities] = useState([])
-    
-    useEffect(() => {
-        axios.get("https://pokeapi.co/api/v2/ability/150/").then((response) => {
-            setAbilities(response.data.names)
-        }).catch((error) => {
-            console.log(error)
-        })
-    }, [])
+    const [products, setProducts] = useState([
+        {
+            name: 'Maça',
+            type: 'Fruta'
+        },
+
+        {
+            name: 'Limão',
+            type: 'Fruta'
+        }
+    ])
 
     return (
         <Container>
+            <div>
+                <h2>GrowUp</h2>
+            </div>
+
             {
-               abilities.length == 0 ? <h1>Loading...</h1> :  
-               abilities.map((item) => {
-                return <Title>{item.name}</Title>
-                }) 
+               products.length == 0 ? <h1>Loading...</h1> :  
+               products.map((item) => {
+                return <div>
+                    <h1>{item.name}</h1>
+                    <span>{item.type}</span>
+                </div>
+                })
             }
         </Container>
     )
