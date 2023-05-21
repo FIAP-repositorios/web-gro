@@ -1,6 +1,6 @@
 // Felipe
 import { useEffect, useState } from 'react'
-import { Container, Title } from '../styles/home'
+import { Container, Title, Header } from '../styles/home'
 import axios from 'axios'
 
 export default function Home() {
@@ -18,9 +18,9 @@ export default function Home() {
 
     return (
         <Container>
-            <div>
+            <Header>
                 <h2>GrowUp</h2>
-            </div>
+            </Header>
 
             {
                products.length == 0 ? <h1>Loading...</h1> :  
