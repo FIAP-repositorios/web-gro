@@ -1,27 +1,68 @@
 // Felipe
 import { useEffect, useState } from 'react'
-import { Container, Title } from '../styles/home'
+import { Container, Title, Header, Content, List } from '../styles/home'
 import axios from 'axios'
+import Logo from '../images/logo.png'
 
 export default function Home() {
-    const [abilities, setAbilities] = useState([])
-    
-    useEffect(() => {
-        axios.get("https://pokeapi.co/api/v2/ability/150/").then((response) => {
-            setAbilities(response.data.names)
-        }).catch((error) => {
-            console.log(error)
-        })
-    }, [])
+    const [products, setProducts] = useState([
+        {
+            name: 'Maças',
+            type: 'Fruta',
+            img: 'public/'
+        },
+
+        {
+            name: 'Limões',
+            type: 'Fruta',
+            img: 'public/'
+        },
+
+        {
+            name: 'Uvas',
+            type: 'Fruta',
+            img: 'public/'
+        },
+
+        {
+            name: 'Peixes',
+            type: 'Peixe',
+            img: 'public/'
+        },
+
+        {
+            name: 'Carnes',
+            type: 'Carne',
+            img: 'public/'
+        },
+
+        {
+            name: 'Leites',
+            type: 'Leite',
+            img: 'public/'
+        }
+    ])
 
     return (
         <Container>
-            {
-               abilities.length == 0 ? <h1>Loading...</h1> :  
-               abilities.map((item) => {
-                return <Title>{item.name}</Title>
-                }) 
-            }
+            <Header>
+                <img src={Logo} />
+            </Header>
+
+            <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                <Content>
+                    {
+                        products.length == 0 ? <h1>Loading...</h1> :  
+                        products.map((item) => {
+                            return <List>
+                                <Title>{item.name}</Title>
+                                <span>{item.type}</span>
+                                <button>Visualizar</button>
+                            </List>
+                        })
+                    }
+                </Content>
+            </div>
         </Container>
     )
 }
