@@ -39,7 +39,6 @@ export const List = styled.div`
     margin: 2rem;
     border-radius: 10px;
     box-shadow: 0.5px 0.8px 1px 0.3px gray;
-    cursor: pointer;
 
     button {
         background: #00A066;
@@ -50,5 +49,6 @@ export const List = styled.div`
         height: 1.5rem;
         color: white;
         border: 0px;
+        cursor: pointer;
     }
 ` 
